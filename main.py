@@ -1,5 +1,8 @@
-from activity.student import Student
-from activity.comparison import get_student_with_more_classes
+from school_schedule.student import Student
+from school_schedule.high_school_student import HighSchoolStudent
+from school_schedule.middle_school_student import MiddleSchoolStudent
+
+from school_schedule.comparison import get_student_with_more_classes
 
 # first instance
 samara = Student( "Samara", "junior", [ "Pre-Calc", "English III", "World History", "Gym", "Chemistry", "Music Composition" ] )
@@ -20,4 +23,52 @@ claire.get_num_classes()  # => 6
 claire.summary()  # => "Claire is a freshman enrolled in 6 classes"
 
 # function
-get_student_with_more_classes(claire, samara)  # => samara
+print(get_student_with_more_classes(claire, samara)) # => samara
+
+
+quinn = Student(
+                "Quinn", 
+                "junior", 
+                [
+                    "Pre-Calc", 
+                    "English III", 
+                    "World History", 
+                    "Gym", 
+                    "Chemistry", 
+                    "Music Composition"
+                ]
+            )
+
+quinn.add_class("Painting")
+
+# second instance
+claire = HighSchoolStudent(
+                "Claire", 
+                "freshmen", 
+                [
+                    "Algebra", 
+                    "Writing", 
+                    "Contemporary Issues", 
+                    "Gym", 
+                    "Earth Science", 
+                    "Painting"
+                ],
+                has_parking_privileges=True,
+                clubs=["Algorithms Club"]
+            )
+# third instance
+
+mikelle = MiddleSchoolStudent(
+                "Mikelle", 
+                "sophomore", 
+                [
+                    "Algebra", 
+                    "Python", 
+                    "Logic 101", 
+                ],
+                gets_transportation=True
+            )
+
+students = [quinn, claire, mikelle]
+for student in students:
+    print(student.summary())
